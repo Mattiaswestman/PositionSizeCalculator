@@ -5,13 +5,13 @@
              xmlns:viewmodel="clr-namespace:PositionSizeCalculator.ViewModel"
              x:DataType="viewmodel:MainViewModel">
 
-    <Grid RowSpacing="25" 
+    <Grid RowSpacing="30" 
           Padding="25">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -20,18 +20,18 @@
                    Text="Position Size Calculator"
                    FontSize="30"
                    FontAttributes="Bold"
-                   TextColor="White"/>
+                   TextColor="White" />
         </Grid>
 
         <Grid Grid.Row="1">
 
             <Grid ColumnSpacing="25">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Column="0"
@@ -40,9 +40,9 @@
                         CornerRadius="10"
                         BackgroundColor="{StaticResource Green}"
                         Text="Long"
-                        FontSize="20"
+                        FontSize="24"
                         FontAttributes="Bold"
-                        TextColor="White"/>
+                        TextColor="White" />
 
                 <Button Grid.Column="1"
                         HorizontalOptions="Fill"
@@ -50,28 +50,28 @@
                         CornerRadius="10"
                         BackgroundColor="{StaticResource Red}"
                         Text="Short"
-                        FontSize="20"
+                        FontSize="24"
                         FontAttributes="Bold"
-                        TextColor="White"/>
+                        TextColor="White" />
             </Grid>
         </Grid>
 
         <Grid Grid.Row="2">
 
-            <Grid RowSpacing="5">
+            <Grid RowSpacing="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
 
                     <Grid RowSpacing="5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="0"
@@ -79,7 +79,7 @@
                                VerticalOptions="Center"
                                Text="Account Size"
                                FontSize="18"
-                               TextColor="White"/>
+                               TextColor="White" />
 
 						<Border Grid.Row="1"
                                 HorizontalOptions="Fill"
@@ -88,16 +88,15 @@
                                 Background="{StaticResource ForegroundColor}"
                                 StrokeThickness="0">
 							<Border.StrokeShape>
-								<RoundRectangle CornerRadius="10"/>
+								<RoundRectangle CornerRadius="10" />
 							</Border.StrokeShape>
 
 							<Entry BackgroundColor="Transparent"
                                    Placeholder="0"
                                    Text="{Binding Text}"
                                    FontSize="18"
-                                   TextColor="White"/>
+                                   TextColor="White" />
 						</Border>
-
 					</Grid>
                 </Grid>
 
@@ -105,8 +104,8 @@
                     
                     <Grid RowSpacing="5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="0"
@@ -114,40 +113,192 @@
                                VerticalOptions="Center"
                                Text="Risk"
                                FontSize="18"
-                               TextColor="White"/>
+                               TextColor="White" />
 
-                        <Border Grid.Row="1"
+						<Border Grid.Row="1"
                                 HorizontalOptions="Fill"
                                 VerticalOptions="Center"
                                 Padding="10, 0"
                                 Background="{StaticResource ForegroundColor}"
                                 StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10"/>
-                            </Border.StrokeShape>
+							<Border.StrokeShape>
+								<RoundRectangle CornerRadius="10" />
+							</Border.StrokeShape>
 
-                            <Entry BackgroundColor="Transparent"
+							<Entry BackgroundColor="Transparent"
                                    Placeholder="0%"
                                    Text="{Binding Text}"
                                    FontSize="18"
-                                   TextColor="White"/>
-                        </Border>
-
-                    </Grid>
+                                   TextColor="White" />
+						</Border>
+					</Grid>
                 </Grid>
 
                 <Grid Grid.Row="2">
+					<Grid RowSpacing="5">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
 
-                </Grid>
+						<Label Grid.Row="0"
+							   HorizontalOptions="Start"
+							   VerticalOptions="Center"
+							   Text="Entry"
+							   FontSize="18"
+							   TextColor="White" />
+
+						<Border Grid.Row="1"
+								HorizontalOptions="Fill"
+								VerticalOptions="Center"
+								Padding="10, 0"
+								Background="{StaticResource ForegroundColor}"
+								StrokeThickness="0">
+							<Border.StrokeShape>
+								<RoundRectangle CornerRadius="10" />
+							</Border.StrokeShape>
+
+							<Entry BackgroundColor="Transparent"
+								   Placeholder="0"
+								   Text="{Binding Text}"
+								   FontSize="18"
+								   TextColor="White" />
+						</Border>
+					</Grid>
+				</Grid>
 
                 <Grid Grid.Row="3">
+					<Grid RowSpacing="5">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
 
-                </Grid>
+						<Label Grid.Row="0"
+							   HorizontalOptions="Start"
+							   VerticalOptions="Center"
+							   Text="Stop Loss"
+							   FontSize="18"
+							   TextColor="White" />
+
+						<Border Grid.Row="1"
+								HorizontalOptions="Fill"
+								VerticalOptions="Center"
+								Padding="10, 0"
+								Background="{StaticResource ForegroundColor}"
+								StrokeThickness="0">
+							<Border.StrokeShape>
+								<RoundRectangle CornerRadius="10" />
+							</Border.StrokeShape>
+
+							<Entry BackgroundColor="Transparent"
+								   Placeholder="0"
+								   Text="{Binding Text}"
+								   FontSize="18"
+								   TextColor="White" />
+						</Border>
+					</Grid>
+				</Grid>
 
 
             </Grid>
         </Grid>
-    </Grid>
+
+		<Grid Grid.Row="3">
+			<Grid RowSpacing="5">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="2" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="2" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="2" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.75*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Label Grid.Row="0"
+					   Grid.Column="0"
+					   HorizontalOptions="Start"
+					   VerticalOptions="Center"
+					   Padding="10, 0"
+					   Text="Shares"
+					   FontSize="24"
+					   TextColor="White" />
+
+				<Label Grid.Row="0"
+					   Grid.Column="1"
+					   HorizontalOptions="End"
+					   VerticalOptions="Center"
+					   Padding="10, 0"
+					   Text="100"
+					   FontSize="24"
+					   FontAttributes="Bold"
+					   TextColor="{StaticResource Green}" />
+
+				<BoxView Grid.Row="1"
+						 Grid.ColumnSpan="2"
+						 HeightRequest="2"
+						 HorizontalOptions="Fill"
+						 VerticalOptions="Center"
+						 BackgroundColor="{StaticResource ForegroundColor}" />
+
+				<Label Grid.Row="2"
+					   Grid.Column="0"
+					   HorizontalOptions="Start"
+					   VerticalOptions="Center"
+					   Padding="10, 0"
+					   Text="Value"
+					   FontSize="24"
+					   TextColor="White" />
+
+				<Label Grid.Row="2"
+					   Grid.Column="1"
+					   HorizontalOptions="End"
+					   VerticalOptions="Center"
+					   Padding="10, 0"
+					   Text="1000"
+					   FontSize="24"
+					   FontAttributes="Bold"
+					   TextColor="White" />
+
+				<BoxView Grid.Row="3"
+						 Grid.ColumnSpan="2"
+						 HeightRequest="2"
+						 HorizontalOptions="Fill"
+						 VerticalOptions="Center"
+						 BackgroundColor="{StaticResource ForegroundColor}" />
+
+				<Label Grid.Row="4"
+					   Grid.Column="0"
+					   HorizontalOptions="Start"
+					   VerticalOptions="Center"
+					   Padding="10, 0"
+					   Text="Risk"
+					   FontSize="24"
+					   FontAttributes="Bold"
+					   TextColor="White" />
+
+				<Label Grid.Row="4"
+					   Grid.Column="1"
+					   HorizontalOptions="End"
+					   VerticalOptions="Center"
+					   Padding="10, 0"
+					   Text="200"
+					   FontSize="24"
+					   TextColor="{StaticResource Red}" />
+
+				<BoxView Grid.Row="5"
+						 Grid.ColumnSpan="2"
+						 HeightRequest="2"
+						 HorizontalOptions="Fill"
+						 VerticalOptions="Center"
+						 BackgroundColor="{StaticResource ForegroundColor}" />
+			</Grid>
+		</Grid>
+	</Grid>
 </ContentPage>
 
     
