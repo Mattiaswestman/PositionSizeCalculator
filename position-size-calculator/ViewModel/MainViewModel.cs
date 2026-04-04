@@ -1,57 +1,104 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace PositionSizeCalculator.ViewModel
 {
     public partial class MainViewModel : ObservableObject
     {
-        private IConnectivity connectivity;
-
-        [ObservableProperty]
-        private ObservableCollection<string> items;
-
-        [ObservableProperty]
-        private string text;
-
-        public MainViewModel(IConnectivity connectivity)
+        public double AccountSizeValue
         {
-            items = new ObservableCollection<string>();
-            this.connectivity = connectivity;
+            get => accountSizeValue;
+            set
+            {
+                if(value != accountSizeValue)
+                {
+                    accountSizeValue = value;
+                    TryCalculatePositionSize();
+                }
+            }
+        }
+
+        public double RiskPercentage
+        {
+            get => riskPercentage;
+            set
+            {
+                if (value != riskPercentage)
+                {
+                    riskPercentage = value;
+                    TryCalculatePositionSize();
+                }
+            }
+        }
+
+        public double EntryPrice
+        {
+            get => entryPrice;
+            set
+            {
+                if (value != entryPrice)
+                {
+                    entryPrice = value;
+                    TryCalculatePositionSize();
+                }
+            }
+        }
+
+        public double StopLossPrice
+        {
+            get => stopLossPrice;
+            set
+            {
+                if (value != stopLossPrice)
+                {
+                    stopLossPrice = value;
+                    TryCalculatePositionSize();
+                }
+            }
+        }
+
+        [ObservableProperty]
+        private int sharesAmount;
+        [ObservableProperty]
+        private double sharesValue;
+        [ObservableProperty]
+        private double riskValue;
+
+        private double accountSizeValue;
+        private double riskPercentage;
+        private double entryPrice;
+        private double stopLossPrice;
+        private bool isLong;
+
+        public MainViewModel()
+        {
         }
 
         [RelayCommand]
-        async Task Add()
+        private void ToggleLong()
         {
-            if (string.IsNullOrWhiteSpace(Text))
+            isLong = true;
+        }
+
+        [RelayCommand]
+        private void ToggleShort()
+        {
+            isLong = false;
+        }
+
+        private void TryCalculatePositionSize()
+        {
+            if (accountSizeValue == 0 || riskPercentage == 0 || entryPrice == 0 || stopLossPrice == 0)
             {
                 return;
             }
 
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await Shell.Current.DisplayAlert("Error", "No internet detected", "OK");
-                return;
-            }
-
-            Items.Add(Text);
-            Text = string.Empty;
-        }
-
-        [RelayCommand]
-        void Delete(string text)
-        {
-            if (Items.Contains(text))
-            {
-                Items.Remove(text);
-            }
-        }
-
-        [RelayCommand]
-        async Task Tap(string text)
-        {
-            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={text}");
+            RiskValue = accountSizeValue * (riskPercentage / 100);
+            double riskPerShare = entryPrice - stopLossPrice;
+            SharesAmount = (int)(RiskValue / riskPerShare);
+            SharesValue = SharesAmount * entryPrice;
+            Math.Round(SharesValue, 2);
         }
     }
 }

@@ -42,8 +42,9 @@
                         Text="Long"
                         FontSize="24"
                         FontAttributes="Bold"
-                        TextColor="White" />
-
+                        TextColor="White" 
+						Command="{Binding ToggleLongCommand}" />
+						
                 <Button Grid.Column="1"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center"
@@ -52,7 +53,8 @@
                         Text="Short"
                         FontSize="24"
                         FontAttributes="Bold"
-                        TextColor="White" />
+                        TextColor="White"
+						Command="{Binding ToggleShortCommand}" />
             </Grid>
         </Grid>
 
@@ -91,9 +93,10 @@
 								<RoundRectangle CornerRadius="10" />
 							</Border.StrokeShape>
 
-							<Entry BackgroundColor="Transparent"
+							<Entry Keyboard="Numeric"
+								   BackgroundColor="Transparent"
                                    Placeholder="0"
-                                   Text="{Binding Text}"
+								   Text="{Binding AccountSizeValue}"
                                    FontSize="18"
                                    TextColor="White" />
 						</Border>
@@ -125,9 +128,10 @@
 								<RoundRectangle CornerRadius="10" />
 							</Border.StrokeShape>
 
-							<Entry BackgroundColor="Transparent"
+							<Entry Keyboard="Numeric"
+								   BackgroundColor="Transparent"
                                    Placeholder="0%"
-                                   Text="{Binding Text}"
+                                   Text="{Binding RiskPercentage}"
                                    FontSize="18"
                                    TextColor="White" />
 						</Border>
@@ -158,9 +162,10 @@
 								<RoundRectangle CornerRadius="10" />
 							</Border.StrokeShape>
 
-							<Entry BackgroundColor="Transparent"
+							<Entry Keyboard="Numeric"
+								   BackgroundColor="Transparent"
 								   Placeholder="0"
-								   Text="{Binding Text}"
+								   Text="{Binding EntryPrice}"
 								   FontSize="18"
 								   TextColor="White" />
 						</Border>
@@ -191,9 +196,10 @@
 								<RoundRectangle CornerRadius="10" />
 							</Border.StrokeShape>
 
-							<Entry BackgroundColor="Transparent"
+							<Entry Keyboard="Numeric"
+								   BackgroundColor="Transparent"
 								   Placeholder="0"
-								   Text="{Binding Text}"
+								   Text="{Binding StopLossPrice}"
 								   FontSize="18"
 								   TextColor="White" />
 						</Border>
@@ -233,7 +239,7 @@
 					   HorizontalOptions="End"
 					   VerticalOptions="Center"
 					   Padding="10, 0"
-					   Text="100"
+					   Text="{Binding SharesAmount}"
 					   FontSize="24"
 					   FontAttributes="Bold"
 					   TextColor="{StaticResource Green}" />
@@ -259,7 +265,7 @@
 					   HorizontalOptions="End"
 					   VerticalOptions="Center"
 					   Padding="10, 0"
-					   Text="1000"
+					   Text="{Binding SharesValue}"
 					   FontSize="24"
 					   FontAttributes="Bold"
 					   TextColor="White" />
@@ -286,7 +292,7 @@
 					   HorizontalOptions="End"
 					   VerticalOptions="Center"
 					   Padding="10, 0"
-					   Text="200"
+					   Text="{Binding RiskValue}"
 					   FontSize="24"
 					   TextColor="{StaticResource Red}" />
 
