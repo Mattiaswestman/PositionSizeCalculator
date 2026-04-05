@@ -245,7 +245,7 @@
 					   VerticalOptions="Center"
 					   Padding="10, 0"
 					   Text="Shares"
-					   FontSize="24"
+					   FontSize="18"
 					   TextColor="White" />
 
 				<Label Grid.Row="0"
@@ -271,7 +271,7 @@
 					   VerticalOptions="Center"
 					   Padding="10, 0"
 					   Text="Value"
-					   FontSize="24"
+					   FontSize="18"
 					   TextColor="White" />
 
 				<Label Grid.Row="2"
@@ -297,8 +297,7 @@
 					   VerticalOptions="Center"
 					   Padding="10, 0"
 					   Text="Risk"
-					   FontSize="24"
-					   FontAttributes="Bold"
+					   FontSize="18"
 					   TextColor="White" />
 
 				<Label Grid.Row="4"

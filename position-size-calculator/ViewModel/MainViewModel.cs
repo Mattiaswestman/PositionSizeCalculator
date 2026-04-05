@@ -105,7 +105,7 @@ namespace PositionSizeCalculator.ViewModel
             }
 
             RiskValue = accountSizeValue * (riskPercentage / 100);
-            double riskPerShare = entryPrice - stopLossPrice;
+            double riskPerShare = Math.Abs(entryPrice - stopLossPrice);
             SharesAmount = (int)(RiskValue / riskPerShare);
             SharesValue = SharesAmount * entryPrice;
             Math.Round(SharesValue, 2);
