@@ -121,7 +121,8 @@
               "RelativeToolTip": "position-size-calculator\\AppShell.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-30T10:21:42.298Z"
+              "WhenOpened": "2026-03-30T10:21:42.298Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -155,7 +156,7 @@
               "RelativeDocumentMoniker": "position-size-calculator\\MainPage.xaml",
               "ToolTip": "C:\\Development\\position-size-calculator\\position-size-calculator\\MainPage.xaml",
               "RelativeToolTip": "position-size-calculator\\MainPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAANQAAAAAAAAAAAAjwPIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-03-16T10:09:39.77Z",
               "EditorCaption": ""
@@ -168,7 +169,7 @@
               "RelativeDocumentMoniker": "position-size-calculator\\ViewModel\\MainViewModel.cs",
               "ToolTip": "C:\\Development\\position-size-calculator\\position-size-calculator\\ViewModel\\MainViewModel.cs",
               "RelativeToolTip": "position-size-calculator\\ViewModel\\MainViewModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-16T11:23:06.171Z",
               "EditorCaption": ""
@@ -195,7 +196,8 @@
               "RelativeToolTip": "position-size-calculator\\DetailPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-30T10:07:04.357Z"
+              "WhenOpened": "2026-03-30T10:07:04.357Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

@@ -215,7 +215,7 @@
 		<!-- Labels -->
 		
 		<Grid Grid.Row="2">
-			<Grid RowSpacing="5">
+			<Grid RowSpacing="10">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="2" />
@@ -225,26 +225,17 @@
 					<RowDefinition Height="2" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="0.75*" />
+					<ColumnDefinition Width="0.5*" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 
 				<Label Grid.Row="0"
-					   Grid.Column="0"
-					   HorizontalOptions="Start"
+					   Grid.ColumnSpan="2"
+					   HorizontalOptions="Center"
 					   VerticalOptions="Center"
 					   Padding="10, 0"
-					   Text="Shares"
-					   FontSize="18"
-					   TextColor="White" />
-
-				<Label Grid.Row="0"
-					   Grid.Column="1"
-					   HorizontalOptions="End"
-					   VerticalOptions="Center"
-					   Padding="10, 0"
-					   Text="{Binding SharesAmount}"
-					   FontSize="24"
+					   Text="{Binding SharesAmountText}"
+					   FontSize="30"
 					   FontAttributes="Bold"
 					   TextColor="{StaticResource Green}" />
 
@@ -269,8 +260,8 @@
 					   HorizontalOptions="End"
 					   VerticalOptions="Center"
 					   Padding="10, 0"
-					   Text="{Binding SharesValue}"
-					   FontSize="24"
+					   Text="{Binding SharesValueText}"
+					   FontSize="18"
 					   FontAttributes="Bold"
 					   TextColor="White" />
 
@@ -295,8 +286,9 @@
 					   HorizontalOptions="End"
 					   VerticalOptions="Center"
 					   Padding="10, 0"
-					   Text="{Binding RiskValue}"
-					   FontSize="24"
+					   Text="{Binding RiskValueText}"
+					   FontSize="18"
+					   FontAttributes="Bold"
 					   TextColor="{StaticResource Red}" />
 
 				<BoxView Grid.Row="5"

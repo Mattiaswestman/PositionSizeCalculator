@@ -1,6 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui.Graphics;
 
 namespace PositionSizeCalculator.ViewModel
 {
@@ -72,20 +70,26 @@ namespace PositionSizeCalculator.ViewModel
         }
 
         [ObservableProperty]
-        private int sharesAmount;
+        private string sharesAmountText;
         [ObservableProperty]
-        private double sharesValue;
+        private string sharesValueText;
         [ObservableProperty]
-        private double riskValue;
+        private string riskValueText;
 
         private double accountSizeValue;
         private double maxPositionSizeValue;
         private double riskPercentage;
         private double entryPrice;
         private double stopLossPrice;
+        private double riskValue;
+        private double sharesValue;
+        private int sharesAmount;
         
         public MainViewModel()
         {
+            SharesAmountText = "-- shares";
+            SharesValueText = "$--";
+            RiskValueText = "$--";
         }
 
         private void TryCalculatePositionSize()
@@ -95,26 +99,21 @@ namespace PositionSizeCalculator.ViewModel
                 return;
             }
 
-            RiskValue = accountSizeValue * (riskPercentage / 100);
+            riskValue = accountSizeValue * (riskPercentage / 100);
             double riskPerShare = Math.Abs(entryPrice - stopLossPrice);
-            SharesAmount = (int)Math.Floor(RiskValue / riskPerShare);
+            sharesAmount = (int)Math.Floor(riskValue / riskPerShare);
 
             int maxSharesAmount = (int)Math.Floor(MaxPositionSizeValue / entryPrice);
-            if (SharesAmount > maxSharesAmount)
+            if (sharesAmount > maxSharesAmount)
             {
-                SharesAmount = maxSharesAmount;
+                sharesAmount = maxSharesAmount;
             }
 
-            SharesValue = Math.Round(SharesAmount * entryPrice, 2);
-        }
+            sharesValue = Math.Round(sharesAmount * entryPrice, 2);
 
-        private static Color GetStaticResourceColor(string key)
-        {
-            if (Application.Current.Resources.TryGetValue(key, out var value) && value is Color color)
-            {
-                return color;
-            }
-            return Colors.Transparent;
+            SharesAmountText = $"{sharesAmount} shares";
+            SharesValueText = $"${sharesValue}";
+            RiskValueText = $"${riskValue}";
         }
 
         private bool AreAllValuesSet()
