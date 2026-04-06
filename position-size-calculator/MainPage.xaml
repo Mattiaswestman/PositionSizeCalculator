@@ -10,7 +10,6 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
@@ -23,58 +22,9 @@
 				   TextColor="White" />
 		</Grid>
 
-		<Grid Grid.Row="1">
-
-			<Grid ColumnSpacing="25">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto" />
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="0.5*" />
-					<ColumnDefinition Width="0.5*" />
-				</Grid.ColumnDefinitions>
-
-				<Border Grid.Column="0"
-						HorizontalOptions="Fill"
-						VerticalOptions="Center"
-						Stroke="{StaticResource StrokeColor}"
-						StrokeThickness="1"
-						BackgroundColor="{Binding LongButtonColor}">
-					<Border.StrokeShape>
-						<RoundRectangle CornerRadius="10" />
-					</Border.StrokeShape>
-
-					<Button Text="Long"
-							BackgroundColor="Transparent"
-							FontSize="24"
-							FontAttributes="Bold"
-							TextColor="White"
-							Command="{Binding ToggleLongCommand}" />
-				</Border>
-
-				<Border Grid.Column="1"
-						HorizontalOptions="Fill"
-						VerticalOptions="Center"
-						Stroke="{StaticResource StrokeColor}"
-						StrokeThickness="1"
-						BackgroundColor="{Binding ShortButtonColor}">
-					<Border.StrokeShape>
-						<RoundRectangle CornerRadius="10" />
-					</Border.StrokeShape>
-
-					<Button Text="Short"
-							BackgroundColor="Transparent"
-							FontSize="24"
-							FontAttributes="Bold"
-							TextColor="White"
-							Command="{Binding ToggleShortCommand}" />
-				</Border>
-			</Grid>
-		</Grid>
-
 		<!-- Entries -->
 		
-		<Grid Grid.Row="2">
+		<Grid Grid.Row="1">
 
 			<Grid RowSpacing="10">
 				<Grid.RowDefinitions>
@@ -264,7 +214,7 @@
 
 		<!-- Labels -->
 		
-		<Grid Grid.Row="3">
+		<Grid Grid.Row="2">
 			<Grid RowSpacing="5">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />

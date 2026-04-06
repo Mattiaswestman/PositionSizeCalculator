@@ -6,9 +6,6 @@ namespace PositionSizeCalculator.ViewModel
 {
     public partial class MainViewModel : ObservableObject
     {
-        public Color LongButtonColor => IsLong ? GetStaticResourceColor("Green") : GetStaticResourceColor("ForegroundColor");
-        public Color ShortButtonColor => !IsLong ? GetStaticResourceColor("Red") : GetStaticResourceColor("ForegroundColor");
-
         public double AccountSizeValue
         {
             get => accountSizeValue;
@@ -80,8 +77,6 @@ namespace PositionSizeCalculator.ViewModel
         private double sharesValue;
         [ObservableProperty]
         private double riskValue;
-        [ObservableProperty]
-        private bool isLong = true;
 
         private double accountSizeValue;
         private double maxPositionSizeValue;
@@ -91,24 +86,6 @@ namespace PositionSizeCalculator.ViewModel
         
         public MainViewModel()
         {
-        }
-
-        [RelayCommand]
-        private void ToggleLong()
-        {
-            if (!IsLong)
-            {
-                IsLong = true;
-            }
-        }
-
-        [RelayCommand]
-        private void ToggleShort()
-        {
-            if (IsLong)
-            {
-                IsLong = false;
-            }
         }
 
         private void TryCalculatePositionSize()
@@ -143,12 +120,6 @@ namespace PositionSizeCalculator.ViewModel
         private bool AreAllValuesSet()
         {
             return (accountSizeValue != 0 && maxPositionSizeValue != 0 && riskPercentage != 0 && entryPrice != 0 && stopLossPrice != 0);
-        }
-
-        partial void OnIsLongChanged(bool value)
-        {
-            OnPropertyChanged(nameof(LongButtonColor));
-            OnPropertyChanged(nameof(ShortButtonColor));
         }
     }
 }
