@@ -1,10 +1,13 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
+using PositionSizeCalculator.Utilities;
 
 namespace PositionSizeCalculator.ViewModel
 {
     public partial class MainViewModel : ObservableObject
     {
-        public double AccountSizeValue
+        public decimal AccountSizeValue
         {
             get => accountSizeValue;
             set
@@ -17,7 +20,7 @@ namespace PositionSizeCalculator.ViewModel
             }
         }
 
-        public double MaxPositionSizeValue
+        public decimal MaxPositionSizeValue
         {
             get => maxPositionSizeValue;
             set
@@ -25,6 +28,32 @@ namespace PositionSizeCalculator.ViewModel
                 if (value != maxPositionSizeValue)
                 {
                     maxPositionSizeValue = value;
+                    TryCalculatePositionSize();
+                }
+            }
+        }
+
+        public decimal EntryPrice
+        {
+            get => entryPrice;
+            set
+            {
+                if (value != entryPrice)
+                {
+                    entryPrice = value;
+                    TryCalculatePositionSize();
+                }
+            }
+        }
+
+        public decimal StopLossPrice
+        {
+            get => stopLossPrice;
+            set
+            {
+                if (value != stopLossPrice)
+                {
+                    stopLossPrice = value;
                     TryCalculatePositionSize();
                 }
             }
@@ -43,32 +72,6 @@ namespace PositionSizeCalculator.ViewModel
             }
         }
 
-        public double EntryPrice
-        {
-            get => entryPrice;
-            set
-            {
-                if (value != entryPrice)
-                {
-                    entryPrice = value;
-                    TryCalculatePositionSize();
-                }
-            }
-        }
-
-        public double StopLossPrice
-        {
-            get => stopLossPrice;
-            set
-            {
-                if (value != stopLossPrice)
-                {
-                    stopLossPrice = value;
-                    TryCalculatePositionSize();
-                }
-            }
-        }
-
         [ObservableProperty]
         private string sharesAmountText;
         [ObservableProperty]
@@ -76,40 +79,54 @@ namespace PositionSizeCalculator.ViewModel
         [ObservableProperty]
         private string riskValueText;
 
-        private double accountSizeValue;
-        private double maxPositionSizeValue;
+        private ExchangeRateProvider exchangeRateProvider;
+
+        private decimal accountSizeValue;
+        private decimal maxPositionSizeValue;
+        private decimal entryPrice;
+        private decimal stopLossPrice;
         private double riskPercentage;
-        private double entryPrice;
-        private double stopLossPrice;
-        private double riskValue;
-        private double sharesValue;
+
+        private decimal riskValue;
+        private decimal sharesValue;
         private int sharesAmount;
-        
+
         public MainViewModel()
         {
+            exchangeRateProvider = new ExchangeRateProvider();
+
             SharesAmountText = "-- shares";
             SharesValueText = "-- SEK";
             RiskValueText = "-- SEK";
         }
 
-        private void TryCalculatePositionSize()
+        private async Task TryCalculatePositionSize()
+        {
+            await TryCalculatePositionSizeAsync();
+        }
+
+        private async Task TryCalculatePositionSizeAsync()
         {
             if (!AreAllValuesSet())
             {
                 return;
             }
 
-            riskValue = accountSizeValue * (riskPercentage / 100);
-            double riskPerShare = Math.Abs(entryPrice - stopLossPrice);
+            riskValue = accountSizeValue * ((decimal)riskPercentage / 100);
+
+            decimal entryPriceInSek = await exchangeRateProvider.ConvertAsync(entryPrice, "USD", "SEK");
+            decimal stopLossPriceInSek = await exchangeRateProvider.ConvertAsync(stopLossPrice, "USD", "SEK");
+            decimal riskPerShare = Math.Abs(entryPriceInSek - stopLossPriceInSek);
+
             sharesAmount = (int)Math.Floor(riskValue / riskPerShare);
 
-            int maxSharesAmount = (int)Math.Floor(MaxPositionSizeValue / entryPrice);
+            int maxSharesAmount = (int)Math.Floor(MaxPositionSizeValue / entryPriceInSek);
             if (sharesAmount > maxSharesAmount)
             {
                 sharesAmount = maxSharesAmount;
             }
 
-            sharesValue = Math.Round(sharesAmount * entryPrice, 2);
+            sharesValue = Math.Round(sharesAmount * entryPriceInSek, 2);
 
             SharesAmountText = $"{sharesAmount} shares";
             SharesValueText = $"{sharesValue} SEK";

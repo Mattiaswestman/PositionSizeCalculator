@@ -14,6 +14,10 @@ namespace PositionSizeCalculator.Utilities
             {
                 return string.Empty;
             }
+            if (value is decimal decimalValue && decimalValue == 0.0m)
+            {
+                return string.Empty;
+            }
             return value?.ToString() ?? string.Empty;
         }
 
@@ -30,7 +34,11 @@ namespace PositionSizeCalculator.Utilities
             if (targetType == typeof(double) && double.TryParse(value as string, out var doubleValue))
             {
                 return doubleValue;
-            } 
+            }
+            if (targetType == typeof(decimal) && decimal.TryParse(value as string, out var decimalValue))
+            {
+                return decimalValue;
+            }
             return 0;
         }
     }
