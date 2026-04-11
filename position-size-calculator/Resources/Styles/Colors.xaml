@@ -11,7 +11,9 @@
     <Color x:Key="ForegroundColor">#1A1A21</Color>
 	<Color x:Key="StrokeColor">#535367</Color>
     <Color x:Key="Green">#059669</Color>
-    <Color x:Key="Red">#EF4444</Color>
+	<Color x:Key="Red">#EF4444</Color>
+	<Color x:Key="Blue">#3B82F6</Color>
+	<Color x:Key="TransparentBlue">#1A3B82F6</Color>
 
     <!-- Default colors -->
     <Color x:Key="Primary">#512BD4</Color>

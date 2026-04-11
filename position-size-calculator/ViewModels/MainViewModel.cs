@@ -18,7 +18,6 @@ namespace PositionSizeCalculator.ViewModels
                 }
             }
         }
-
         public decimal MaxPositionSizeValue
         {
             get => maxPositionSizeValue;
@@ -31,7 +30,6 @@ namespace PositionSizeCalculator.ViewModels
                 }
             }
         }
-
         public decimal EntryPrice
         {
             get => entryPrice;
@@ -44,7 +42,6 @@ namespace PositionSizeCalculator.ViewModels
                 }
             }
         }
-
         public decimal StopLossPrice
         {
             get => stopLossPrice;
@@ -57,7 +54,6 @@ namespace PositionSizeCalculator.ViewModels
                 }
             }
         }
-
         public double RiskPercentage
         {
             get => riskPercentage;
