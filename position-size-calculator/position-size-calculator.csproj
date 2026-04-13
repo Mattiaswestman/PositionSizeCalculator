@@ -20,6 +20,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		<WindowsPackageType>MSIX</WindowsPackageType>
+		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+		<EnableMsixTooling>true</EnableMsixTooling>
+
 		<!-- Display name -->
 		<ApplicationTitle>Position Size Calculator</ApplicationTitle>
 
@@ -39,6 +43,22 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 
 		<DefaultLanguage>en</DefaultLanguage>
+
+		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+
+		<PackageCertificateThumbprint>4D81B00355BDF46E326094F5E21CB81B79F73C9A</PackageCertificateThumbprint>
+
+		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+
+		<AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+
+		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+
+		<GenerateTestArtifacts>True</GenerateTestArtifacts>
+
+		<AppInstallerUri>C:\Development</AppInstallerUri>
+
+		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 	</PropertyGroup>
 
 	<ItemGroup>

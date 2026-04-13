@@ -2,13 +2,11 @@
 using Microsoft.Maui.Handlers;
 using PositionSizeCalculator.Views;
 using PositionSizeCalculator.ViewModels;
-//using Microsoft.Maui.Controls.PlatformConfiguration;
-
 
 #if WINDOWS
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml;
 #endif
 #if ANDROID
 using Android.Content.Res;
