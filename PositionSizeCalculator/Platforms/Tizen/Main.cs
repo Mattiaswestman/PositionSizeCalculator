@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace Position_Size_Calculator
+namespace PositionSizeCalculator
 {
     internal class Program : MauiApplication
     {
